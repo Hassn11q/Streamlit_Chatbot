@@ -58,6 +58,7 @@ if prompt := st.chat_input('How can i Help You ?'):
         for response in client.chat.completions.create(
             model = st.session_state['openai_model'] , 
             messages = st.session_state['messages'],
+            max_tokens = 2048,
             stream = True , ):
             full_response += response.choices[0].delta.content or ''
             message_placeholder.markdown(full_response + '|')
